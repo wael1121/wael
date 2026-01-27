@@ -1,318 +1,445 @@
-// ============== بيانات المقالات ==============
-const articlesData = [
-    {
-        id: 1,
-        title: "ثورة الذكاء الاصطناعي في 2024: ماذا تتوقع؟",
-        description: "تحليل شامل لأهم اتجاهات الذكاء الاصطناعي لهذا العام وتأثيرها على مختلف الصناعات",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "ai",
-        date: "15 مارس 2024",
-        isNew: true
-    },
-    {
-        id: 2,
-        title: "تعلم JavaScript للمبتدئين: دليل شامل",
-        description: "بداية رحلتك في البرمجة مع لغة JavaScript من الصفر حتى الإحتراف",
-        image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "programming",
-        date: "10 مارس 2024",
-        isNew: true
-    },
-    {
-        id: 3,
-        title: "أفضل 10 لابتوبات للبرمجة في 2024",
-        description: "دليل مفصل لاختيار الحاسب المناسب لمطوري البرمجيات والمبرمجين",
-        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "hardware",
-        date: "8 مارس 2024"
-    },
-    {
-        id: 4,
-        title: "كيف تحمي حسابك من القرصنة الإلكترونية؟",
-        description: "نصائح أساسية وأدوات مجانية لتأمين حساباتك على الإنترنت",
-        image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "security",
-        date: "5 مارس 2024"
-    },
-    {
-        id: 5,
-        title: "ChatGPT 4: الثورة القادمة في المحادثات الذكية",
-        description: "كل ما تحتاج معرفته عن أحدث إصدارات ChatGPT وكيفية الاستفادة منه",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "ai",
-        date: "3 مارس 2024"
-    },
-    {
-        id: 6,
-        title: "Python vs JavaScript: أيهما تتعلم أولاً؟",
-        description: "مقارنة شاملة بين اللغتين لتساعدك على اتخاذ القرار المناسب",
-        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "programming",
-        date: "28 فبراير 2024"
-    },
-    {
-        id: 7,
-        title: "تقنية 5G: كيف ستغير عالم الاتصالات؟",
-        description: "تأثير الجيل الخامس على السرعة والتطبيقات الذكية",
-        image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "hardware",
-        date: "25 فبراير 2024"
-    },
-    {
-        id: 8,
-        title: "أهم 10 نصائح لزيادة إنتاجيتك التقنية",
-        description: "أدوات وحيل بسيطة تضاعف من كفاءتك في العمل الرقمي",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "tips",
-        date: "22 فبراير 2024"
-    },
-    {
-        id: 9,
-        title: "الحوسبة السحابية: مستقبل تخزين البيانات",
-        description: "دليل شامل لفهم السحابة الإلكترونية ومميزاتها",
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "ai",
-        date: "20 فبراير 2024"
-    },
-    {
-        id: 10,
-        title: "كيفية إنشاء أول موقع ويب خاص بك",
-        description: "خطوة بخطوة من الصفر حتى النشر على الإنترنت",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "programming",
-        date: "18 فبراير 2024"
-    },
-    {
-        id: 11,
-        title: "أفضل سماعات الرأس للمطورين والمبرمجين",
-        description: "مراجعة شاملة لأفضل سماعات العمل والترفيه",
-        image: "https://images.unsplash.com/photo-1484704849700-f032a568e944?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "hardware",
-        date: "15 فبراير 2024"
-    },
-    {
-        id: 12,
-        title: "كيف تحمي خصوصيتك على وسائل التواصل؟",
-        description: "إعدادات الخصوصية التي يجب على الجميع تفعيلها",
-        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "security",
-        date: "12 فبراير 2024"
-    },
-    {
-        id: 13,
-        title: "التعلم الآلي: مقدمة مبسطة للمبتدئين",
-        description: "فهم أساسيات Machine Learning بدون تعقيد",
-        image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "ai",
-        date: "10 فبراير 2024"
-    },
-    {
-        id: 14,
-        title: "CSS Grid vs Flexbox: أيهما تختار؟",
-        description: "مقارنة تفصيلية بين نظامي التخطيط الأشهر",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "programming",
-        date: "8 فبراير 2024"
-    },
-    {
-        id: 15,
-        title: "كيف تختار كاميرا الويب المناسبة للعمل عن بعد",
-        description: "معايير الاختيار وأفضل الموديلات المتاحة",
-        image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        category: "hardware",
-        date: "5 فبراير 2024"
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* الشريط العلوي */
+.navbar {
+    background: #1a237e;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    color: #4fc3f7;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* القسم الرئيسي */
+.hero {
+    display: flex;
+    align-items: center;
+    padding: 6rem 2rem 4rem;
+    background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+    min-height: 80vh;
+}
+
+.hero-content {
+    flex: 1;
+    padding-left: 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: #1a237e;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #3949ab;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.cta-button:hover {
+    background: #283593;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.hero-image {
+    flex: 1;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* قسم المقالات */
+.articles-section {
+    padding: 4rem 2rem;
+    background: white;
+}
+
+.articles-section h2 {
+    text-align: center;
+    color: #1a237e;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    background: white;
+    border: 2px solid #ddd;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.3s;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: #2196f3;
+    border-color: #2196f3;
+    color: white;
+}
+
+.articles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.article-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.article-card:hover {
+    transform: translateY(-10px);
+}
+
+.article-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.article-content {
+    padding: 1.5rem;
+}
+
+.article-content h3 {
+    color: #1a237e;
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+}
+
+.article-content p {
+    color: #666;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.read-more {
+    display: inline-block;
+    color: #2196f3;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 0;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* قسم المعرض */
+.gallery-section {
+    padding: 4rem 2rem;
+    background: #f5f7fa;
+}
+
+.gallery-section h2 {
+    text-align: center;
+    color: #1a237e;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+/* قسم من نحن */
+.about-section {
+    padding: 4rem 2rem;
+    background: white;
+}
+
+.about-section h2 {
+    text-align: center;
+    color: #1a237e;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature {
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature i {
+    font-size: 2.5rem;
+    color: #2196f3;
+    margin-bottom: 1rem;
+}
+
+.feature h3 {
+    color: #1a237e;
+    margin-bottom: 1rem;
+}
+
+/* قسم الاتصال */
+.contact-section {
+    padding: 4rem 2rem;
+    background: #f5f7fa;
+}
+
+.contact-section h2 {
+    text-align: center;
+    color: #1a237e;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#contactForm input,
+#contactForm textarea {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#contactForm button {
+    background: #2196f3;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#contactForm button:hover {
+    background: #1976d2;
+}
+
+.contact-info {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.contact-info h3 {
+    color: #1a237e;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info p {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #555;
+}
+
+/* التذييل */
+footer {
+    background: #1a237e;
+    color: white;
+    padding: 3rem 2rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #4fc3f7;
+}
+
+/* التجاوب */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
     }
-];
-
-// ============== متغيرات التحكم ==============
-let currentCategory = 'all';
-let visibleArticles = 6;
-
-// ============== عرض المقالات ==============
-function displayArticles() {
-    const container = document.querySelector('.articles-container');
-    container.innerHTML = '';
     
-    // تصفية المقالات حسب التصنيف
-    let filteredArticles = currentCategory === 'all' 
-        ? articlesData 
-        : articlesData.filter(article => article.category === currentCategory);
-    
-    // تحديد المقالات المرئية
-    const articlesToShow = filteredArticles.slice(0, visibleArticles);
-    
-    // إنشاء بطاقات المقالات
-    articlesToShow.forEach(article => {
-        const articleCard = document.createElement('article');
-        articleCard.className = 'card';
-        articleCard.setAttribute('data-category', article.category);
-        
-        articleCard.innerHTML = `
-            <div class="card-image">
-                ${article.isNew ? '<span class="new-badge">جديد</span>' : ''}
-                <img src="${article.image}" alt="${article.title}" loading="lazy">
-            </div>
-            <div class="card-content">
-                <div class="card-meta">
-                    <span class="card-category">${getCategoryName(article.category)}</span>
-                    <span class="card-date">${article.date}</span>
-                </div>
-                <h3>${article.title}</h3>
-                <p>${article.description}</p>
-                <a href="#" class="read-more-btn" onclick="readArticle(${article.id})">
-                    اقرأ المزيد <i class="fas fa-arrow-left"></i>
-                </a>
-            </div>
-            <div class="read-indicator"></div>
-        `;
-        
-        container.appendChild(articleCard);
-    });
-    
-    // إخفاء زر تحميل المزيد إذا لم يكن هناك المزيد
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    if (visibleArticles >= filteredArticles.length) {
-        loadMoreBtn.style.display = 'none';
-    } else {
-        loadMoreBtn.style.display = 'inline-flex';
-    }
-}
-
-// ============== وظائف مساعدة ==============
-function getCategoryName(category) {
-    const categories = {
-        'ai': 'الذكاء الاصطناعي',
-        'programming': 'البرمجة',
-        'hardware': 'الأجهزة',
-        'security': 'الأمن السيبراني',
-        'tips': 'نصائح تقنية'
-    };
-    return categories[category] || category;
-}
-
-function readArticle(articleId) {
-    const article = articlesData.find(a => a.id === articleId);
-    alert(`ستفتح مقال: "${article.title}"\n\nهذه خاصية تجريبية. في الموقع الحقيقي، ستفتح صفحة المقال الكاملة.`);
-}
-
-// ============== أحداث التصنيفات ==============
-document.querySelectorAll('.category-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-        // إزالة النشط من جميع الأزرار
-        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-        
-        // إضافة النشط للزر المضغوط
-        this.classList.add('active');
-        
-        // تحديث التصنيف الحالي
-        currentCategory = this.getAttribute('data-category');
-        visibleArticles = 6; // إعادة تعيين عدد المقالات المرئية
-        
-        // إعادة عرض المقالات
-        displayArticles();
-    });
-});
-
-// ============== زر تحميل المزيد ==============
-document.getElementById('loadMoreBtn').addEventListener('click', function() {
-    visibleArticles += 3;
-    displayArticles();
-    
-    // تأثير سلس للتمرير
-    document.querySelector('.articles-container').lastElementChild.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest'
-    });
-});
-
-// ============== بحث بسيط (إضافي) ==============
-function addSearchFunctionality() {
-    const searchHTML = `
-        <div class="search-container">
-            <input type="text" id="articleSearch" placeholder="ابحث في المقالات...">
-            <button id="searchBtn"><i class="fas fa-search"></i></button>
-        </div>
-    `;
-    
-    document.querySelector('.categories').insertAdjacentHTML('beforebegin', searchHTML);
-    
-    document.getElementById('searchBtn').addEventListener('click', performSearch);
-    document.getElementById('articleSearch').addEventListener('keyup', function(e) {
-        if (e.key === 'Enter') performSearch();
-    });
-}
-
-function performSearch() {
-    const searchTerm = document.getElementById('articleSearch').value.toLowerCase();
-    
-    if (searchTerm.trim() === '') {
-        displayArticles();
-        return;
+    .nav-links {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
-    const filtered = articlesData.filter(article => 
-        article.title.toLowerCase().includes(searchTerm) || 
-        article.description.toLowerCase().includes(searchTerm)
-    );
-    
-    const container = document.querySelector('.articles-container');
-    container.innerHTML = '';
-    
-    if (filtered.length === 0) {
-        container.innerHTML = `
-            <div class="no-results">
-                <i class="fas fa-search" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
-                <h3>لا توجد نتائج للبحث</h3>
-                <p>حاول البحث بكلمات أخرى</p>
-            </div>
-        `;
-    } else {
-        filtered.forEach(article => {
-            const articleCard = document.createElement('article');
-            articleCard.className = 'card';
-            articleCard.innerHTML = `
-                <img src="${article.image}" alt="${article.title}">
-                <div class="card-content">
-                    <div class="card-meta">
-                        <span class="card-category">${getCategoryName(article.category)}</span>
-                        <span class="card-date">${article.date}</span>
-                    </div>
-                    <h3>${article.title}</h3>
-                    <p>${article.description}</p>
-                    <a href="#" class="read-more-btn" onclick="readArticle(${article.id})">
-                        اقرأ المزيد <i class="fas fa-arrow-left"></i>
-                    </a>
-                </div>
-            `;
-            container.appendChild(articleCard);
-        });
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 7rem 1rem 3rem;
     }
     
-    document.getElementById('loadMoreBtn').style.display = 'none';
+    .hero-content {
+        padding-left: 0;
+        margin-bottom: 2rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
 }
-
-// ============== تهيئة عند تحميل الصفحة ==============
-document.addEventListener('DOMContentLoaded', function() {
-    // عرض المقالات الأولى
-    displayArticles();
-    
-    // إضافة خاصية البحث (اختياري)
-    // addSearchFunctionality();
-    
-    // تأثيرات عند التمرير
-    const observerOptions = {
-        threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('.card').forEach(card => {
-        observer.observe(card);
-    });
-});
